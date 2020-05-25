@@ -22,13 +22,6 @@
 
 
 
-
-
-;STATUS: Works! Also, need more tests - but for the most part it finally works!!
-
-
-
-
 .data
    pspSegm dw ?   ;console args are located in this at offset 80h
    
@@ -38,7 +31,7 @@
    fileHandle     dw ?
    
    searchWordSize db 50                   ;length of string
-   searchWordStr  db 51 DUP(0),'$'            ;letters
+   searchWordStr  db 51 DUP(0)            ;letters
    
    offsetIn       dw 2 DUP(0)
    ;endLength      dw 513
@@ -121,18 +114,6 @@ start:
    ;restore segments to usual
    mov si, ds
    mov es, si
-   
-   
-   ;Output word, for debugging
-          
-          
-   mov dx, offset searchWordStr
-   mov ah, 09h
-   int 21h
-   
-   
-   
-   
 
    
    ;(test read/write)
